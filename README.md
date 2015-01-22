@@ -1,8 +1,10 @@
-# TodoMVC + FRP + Polymer
+# TodoMVC + FRP + Polymer.dart
 
-An experiment building TodoMVC using Polymer and FRP principles.
+This is an experiment to build a TodoMVC app using Polymer and functional reactive programming (FRP).
 
-## Architecture Overview
+## Architectural Overview
+
+The application is structured using an MVC paradigm. The models are implemented as simple immutable classes, controllers are instances of `ModelController`, and views are implemented with Polymer.dart.
 
 The `ModelController` is responsible for driving the logic for model updates. It defines a property `model` that returns a stream that contains the latest model. The controller also defines a method `update()` which takes an `Action` function that's responsible for updating the model. The `Action` is passed the current model and is expected to return a new model of the action's changes.
 
