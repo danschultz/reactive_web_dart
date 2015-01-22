@@ -1,0 +1,24 @@
+<!--
+  Copyright (c) 2015, <your name>. All rights reserved. Use of this source code
+  is governed by a BSD-style license that can be found in the LICENSE file.
+-->
+
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="task_view.html">
+
+<polymer-element name="main-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <input id="task-input">
+    <template repeat="{{task in model.value.tasks}}">
+      <task-view task="{{task}}" on-complete="{{toggleTask}}" on-delete="{{deleteTask}}"></task-view>
+    </template>
+  </template>
+  <script type="application/dart" src="main_app.dart"></script>
+</polymer-element>

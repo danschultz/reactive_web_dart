@@ -1,0 +1,26 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../packages/polymer/polymer.html">
+
+<polymer-element name="task-view">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      
+      #description {
+        display: inline;
+        transition: opacity 1s;
+      }
+
+      #description.is-completed {
+        text-decoration: line-through;
+        opacity: 0.5;
+      }
+    </style>
+    <div id="description">{{task.description}}</div>
+    <button id="complete-button">Completed</button>
+    <button id="delete-button">Delete</button>
+  </template>
+  <script type="application/dart" src="task_view.dart"></script>
+</polymer-element>
