@@ -1,6 +1,6 @@
 # TodoMVC + FRP + Polymer.dart
 
-This is an experiment to build a TodoMVC app using Polymer and functional reactive programming (FRP).
+This is an experiment to build a TodoMVC app in Dart using Polymer and functional reactive programming (FRP).
 
 ## Architectural Overview
 
