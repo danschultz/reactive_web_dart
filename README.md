@@ -16,7 +16,7 @@ Models are implemented as immutable classes. [Persistent data structures](https:
 
 Changes to the model are initiated from external inputs flowing into the app, such as mouse clicks, key presses, network responses or system events. The app filters these events into `Action`s that are passed to `ModelController.update()` to update the model.
 
-The result of these changes are observed by listening to the `ModelController.model` stream. For example, view's might observe this stream to update the UI, or a persistence layer might observe this stream to save data to a local or remote store.
+The result of these changes are observed by listening to the `ModelController.model` stream, and is used to generate the output from inputs flowing into the app. For example, view's might observe this stream to update the UI, or a persistence layer might observe this stream to save data to a local or remote store.
 
 **Example:** A `ModelController` that manages a `ClickCounter` model.
 
