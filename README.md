@@ -1,16 +1,16 @@
 # TodoMVC + FRP + Polymer.dart
 
-This is an experiment to build a TodoMVC app in Dart using Polymer and functional reactive programming (FRP).
+This is an experiment building TodoMVC in Dart using Polymer and functional reactive programming (FRP).
 
 ## Architectural Overview
 
-The application is structured using an MVC paradigm. The models are implemented as simple immutable classes, controllers are instances of `ModelController`, and views are implemented as custom components in Polymer.dart.
+The application is structured using an MVC paradigm. Models are implemented as simple immutable classes, controllers are subclasses of `ModelController`s, and views are implemented as custom components in Polymer.dart.
 
 ### Controllers
 
-The `ModelController` is responsible for driving the logic for model updates, and is inspired by approaches seen in Elm. The controller is initialized with an empty model and is updated by passing an `Action` function to `ModelController.update()`. The `Action` function is passed a reference to the current model, and returns a new version with the action's changes. Model changes can be observed by listening to `ModelController.model` which returns a stream.
+`ModelController`s are responsible for driving the logic for model updates, and are inspired by approaches I've seen in [Elm](https://github.com/evancz/elm-todomvc). A controller is initialized with an initial model and is updated by passing `Action` functions to `ModelController.update()`. When an `Action` is invoked, it's passed a reference to the current model, and returns a new model with the action's changes. Changes to the model can be observed by listening to `ModelController.model`.
 
-**Example:** A `ModelController` that manages the `ClickCounter` model.
+**Example:** A `ModelController` that manages a `ClickCounter` model.
 
 ```dart
 class ClickCounter {
@@ -32,8 +32,7 @@ button.onClick.forEach((_) {
 // [click button] .. prints 2
 ```
 
-
-`ModelController`s are intended to be sub-classed and should contain methods for performing model changes. For example, we could create a sub-class `ClickCounterController` that contain methods to update the click count.
+`ModelController`s are intended to be sub-classed and should contain methods for performing model changes. For example, we could create a sub-class `ClickCounterController` that contains a method to update the click count.
 
 **Example:** The `ClickCounterController`.
 
@@ -52,13 +51,13 @@ controller.model.listen((model) => print(model.clickCount));
 button.onClick.forEach((_) => controller.increaseCount());
 ```
 
-Take a look at the app's [`ApplicationController`](https://github.com/danschultz/reactive_web_polymer/blob/master/lib/src/models/application.dart) to see how this works in practice.
+Take a look at [`ApplicationController`](https://github.com/danschultz/reactive_web_polymer/blob/master/lib/src/models/application.dart) to see how this works in the app.
 
 ### Views
 
-Views are implemented as custom Polymer components and are responsible for listening to the controller's `model` stream and updating itself. This process is made easier by Polymer.dart's ability to bind directly to a stream in a template.
+Views are implemented as custom Polymer components and are responsible for listening to the controller's `model` stream and updating itself. This process is made easier by Polymer.dart's ability to bind directly to a stream from within a template.
 
-**Example:** Binding to the stream `model` from a template.
+**Example:** Binding to a controller's `model` from a template.
 
 ```html
 <polymer-element name="main-app">
