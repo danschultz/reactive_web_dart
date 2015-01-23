@@ -4,7 +4,11 @@ This is an experiment building TodoMVC in Dart using Polymer and functional reac
 
 ## Architectural Overview
 
-The application is structured using an MVC paradigm. Models are implemented as simple immutable classes, controllers are subclasses of `ModelController`s, and views are implemented as custom components in Polymer.dart.
+The application is structured using an MVC paradigm. Models are implemented as immutable classes, controllers are subclasses of `ModelController`s, and views are implemented as custom components in Polymer.dart.
+
+### Model
+
+Models are implemented as immutable classes. [Persistent data structures](https://pub.dartlang.org/packages/vacuum_persistent) are used whenever modeling collections of data for their performance and immutability features. By keeping the data model immutable, we're assured that it can't be changed in ways that cause unwanted side-effects across the app. It also makes features like undo/redo trivial.
 
 ### Controllers
 
@@ -89,4 +93,4 @@ Views are implemented as custom Polymer components and are responsible for liste
 ```
 
 ## Issues with Polymer
-The app uses an immutable data structure to model the list of tasks. Polymer's `<template repeat>` is effecient at insertions and removals, but will completely recreate nodes for tasks that have been modified. This is problematic when building views that contain animations, and makes it extremely difficult to animate between a tasks' completed and active states.
+The app uses an immutable data structure to model the list of tasks. Polymer's `<template repeat>` is efficient at insertions and removals, but will completely recreate nodes for tasks that have been modified. This is problematic when building views that contain animations, and makes it difficult to animate between a tasks' completed and active states.
