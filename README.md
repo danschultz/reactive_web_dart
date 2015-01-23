@@ -12,25 +12,28 @@ Models are implemented as immutable classes. [Persistent data structures](https:
 
 ### Controllers
 
-`ModelController`s are responsible for driving the logic for model updates, and are inspired by approaches I've seen in [Elm](https://github.com/evancz/elm-todomvc). A controller is initialized with an initial model and is updated by passing `Action` functions to `ModelController.update()`. When an `Action` is invoked, it's passed a reference to the current model, and returns a new model with the action's changes. Changes to the model can be observed by listening to `ModelController.model`.
+`ModelController`s are responsible for driving the logic for model updates, and are inspired by approaches I've seen in [Elm](https://github.com/evancz/elm-todomvc).
+
+Changes to the model are initiated from external inputs flowing into the app, such as mouse clicks, key presses, network responses or system events. The app filters these events into `Action`s that are passed to `ModelController.update()` to update the model.
+
+The result of these changes are observed by listening to the `ModelController.model` stream. For example, view's might observe this stream to update the UI, or a persistence layer might observe this stream to save data to a local or remote store.
 
 **Example:** A `ModelController` that manages a `ClickCounter` model.
 
 ```dart
 class ClickCounter {
   final int clickCount;
-
   ClickCounter(this.clickCount);
 }
 
-var button = new ButtonElement();
-
 var controller = new ModelController(new ClickCounter(0));
-controller.model.listen((model) => print(model.clickCount));
 
+var button = new ButtonElement();
 button.onClick.forEach((_) {
   controller.update((counter) => new ClickCounter(counter.clickCount + 1));
 });
+
+controller.model.listen((model) => print(model.clickCount));
 
 // [click button] .. prints 1
 // [click button] .. prints 2
