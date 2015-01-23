@@ -6,7 +6,7 @@ This is an experiment to build a TodoMVC app using Polymer and functional reacti
 
 The application is structured using an MVC paradigm. The models are implemented as simple immutable classes, controllers are instances of `ModelController`, and views are implemented with Polymer.dart.
 
-The `ModelController` is responsible for driving the logic for model updates. It defines a property `model` that returns a stream that contains the latest model. The controller also defines a method `update()` which takes an `Action` function that's responsible for updating the model. The `Action` is passed the current model and is expected to return a new model of the action's changes.
+The `ModelController` is responsible for driving the logic for model updates, and is inspired by approaches seen in Elm. The controller is initialized with an empty model and is updated by passing an `Action` function to `ModelController.update()`. Model changes can be observed by listening to `ModelController.model` which returns a stream.
 
 **Example:** A `ModelController` that manages the `ClickCounter` model.
 
@@ -31,7 +31,7 @@ button.onClick.forEach((_) {
 ```
 
 
-The `ModelController` is intended to be sub-classed and to contain methods for performing model changes. For example, we could create a sub-class `ClickCounterController` to make it easier to update the click count.
+`ModelController`s are intended to be sub-classed and should contain methods for performing model changes. For example, we could create a sub-class `ClickCounterController` to make it easier to update the click count.
 
 **Example:** The `ClickCounterController`.
 
