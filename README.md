@@ -6,6 +6,8 @@ This is an experiment to build a TodoMVC app using Polymer and functional reacti
 
 The application is structured using an MVC paradigm. The models are implemented as simple immutable classes, controllers are instances of `ModelController`, and views are implemented with Polymer.dart.
 
+### Controllers
+
 The `ModelController` is responsible for driving the logic for model updates, and is inspired by approaches seen in Elm. The controller is initialized with an empty model and is updated by passing an `Action` function to `ModelController.update()`. Model changes can be observed by listening to `ModelController.model` which returns a stream.
 
 **Example:** A `ModelController` that manages the `ClickCounter` model.
@@ -50,7 +52,13 @@ controller.model.listen((model) => print(model.clickCount));
 button.onClick.forEach((_) => controller.increaseCount());
 ```
 
-The view is responsible for listening to the controller's `model` stream and updating itself. Template bindings in Polymer.dart let you bind directly to a stream.
+Take a look at the app's [`ApplicationController`](https://github.com/danschultz/reactive_web_polymer/blob/master/lib/src/models/application.dart) to see how this works in practice.
+
+### Views
+
+Views are implemented as custom Polymer components and are responsible for listening to the controller's `model` stream and updating itself. This process is made easier by Polymer.dart's ability to bind directly to a stream in a template.
+
+**Example:** Binding to the stream `model` from a template.
 
 ```html
 <polymer-element name="main-app">
