@@ -33,7 +33,7 @@ button.onClick.forEach((_) {
 ```
 
 
-`ModelController`s are intended to be sub-classed and should contain methods for performing model changes. For example, we could create a sub-class `ClickCounterController` to make it easier to update the click count.
+`ModelController`s are intended to be sub-classed and should contain methods for performing model changes. For example, we could create a sub-class `ClickCounterController` that contain methods to update the click count.
 
 **Example:** The `ClickCounterController`.
 
