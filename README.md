@@ -8,7 +8,7 @@ The application is structured using an MVC paradigm. The models are implemented 
 
 ### Controllers
 
-The `ModelController` is responsible for driving the logic for model updates, and is inspired by approaches seen in Elm. The controller is initialized with an empty model and is updated by passing an `Action` function to `ModelController.update()`. Model changes can be observed by listening to `ModelController.model` which returns a stream.
+The `ModelController` is responsible for driving the logic for model updates, and is inspired by approaches seen in Elm. The controller is initialized with an empty model and is updated by passing an `Action` function to `ModelController.update()`. The `Action` function is passed a reference to the current model, and returns a new version with the action's changes. Model changes can be observed by listening to `ModelController.model` which returns a stream.
 
 **Example:** A `ModelController` that manages the `ClickCounter` model.
 
