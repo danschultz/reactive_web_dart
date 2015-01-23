@@ -4,7 +4,7 @@ This is an experiment to build a TodoMVC app in Dart using Polymer and functiona
 
 ## Architectural Overview
 
-The application is structured using an MVC paradigm. The models are implemented as simple immutable classes, controllers are instances of `ModelController`, and views are implemented with Polymer.dart.
+The application is structured using an MVC paradigm. The models are implemented as simple immutable classes, controllers are instances of `ModelController`, and views are implemented as custom components in Polymer.dart.
 
 ### Controllers
 
