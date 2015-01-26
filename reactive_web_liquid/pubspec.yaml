@@ -1,0 +1,16 @@
+name: 'reactive_web_liquid'
+version: 0.0.1
+description: >
+  A starter template for a polymer.dart web app.
+#author: <your name> <email@example.com>
+#homepage: https://www.example.com
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+dependencies:
+  browser: any
+  liquid: any
+  reactive_web_core:
+    path: ../reactive_web_core
+  sass: any
+tranformers:
+- sass

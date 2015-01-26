@@ -1,0 +1,5 @@
+.task-view {
+  &.completed {
+    text-decoration: line-through;
+  }
+}
