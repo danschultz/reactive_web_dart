@@ -16,8 +16,19 @@
     </style>
 
     <input id="task-input">
-    <template repeat="{{task in model.value.tasks}}">
+    <template repeat="{{task in model.value.tasks | filter(model.value.visibility) }}">
       <task-view task="{{task}}" on-complete="{{toggleTask}}" on-delete="{{deleteTask}}"></task-view>
+    </template>
+
+    <template if="{{ model.value.tasks.isNotEmpty }}" bind="{{ model }}">
+      <div class="remaining-counter">
+        {{ value.active.length }} items left
+      </div>
+      <div>
+        <a href="#all" on-click="{{showAll}}">All</a>
+        <a href="#active" on-click="{{showActive}}">Active</a>
+        <a href="#completed" on-click="{{showCompleted}}">Completed</a>
+      </div>
     </template>
   </template>
   <script type="application/dart" src="main_app.dart"></script>

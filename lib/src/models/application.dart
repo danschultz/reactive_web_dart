@@ -5,11 +5,27 @@ class Application {
   final int nextId;
   final Visibility visibility;
 
+  Iterable<Task> get active => tasks.where((task) => !task.isCompleted);
+  Iterable<Task> get completed => tasks.where((task) => task.isCompleted);
+
   Application(this.tasks, this.nextId, this.visibility);
+
+  factory Application.fromJson(Map json) {
+    return new Application(
+        json["tasks"].map((json) => new Task.fromJson(json)).toList(),
+        json["nextId"],
+        new Visibility(json["visibility"]));
+  }
+
+  Map toJson() => {
+      "tasks": tasks.toList(),
+      "nextId": nextId,
+      "visibility": visibility
+  };
 }
 
 class ApplicationController extends ModelController<Application> {
-  ApplicationController() : super(new Application([], 0, Visibility.ALL));
+  ApplicationController() : super(initialModel());
 
   void addTask(String description) {
     update((Application model) => new Application(
@@ -37,3 +53,7 @@ class ApplicationController extends ModelController<Application> {
     update((Application model) => new Application(model.tasks, model.nextId, visibility));
   }
 }
+
+Application initialModel() => window.localStorage.containsKey("todomvc")
+    ? new Application.fromJson(JSON.decode(window.localStorage["todomvc"]))
+    : new Application([], 0, Visibility.ALL);

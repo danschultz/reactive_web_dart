@@ -8,4 +8,6 @@ class Visibility {
   final int value;
 
   const Visibility(this.value);
+
+  toJson() => value;
 }
