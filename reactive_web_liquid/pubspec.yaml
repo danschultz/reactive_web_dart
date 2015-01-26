@@ -12,5 +12,5 @@ dependencies:
   reactive_web_core:
     path: ../reactive_web_core
   sass: any
-tranformers:
+transformers:
 - sass

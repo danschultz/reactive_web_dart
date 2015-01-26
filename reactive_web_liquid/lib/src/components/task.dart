@@ -9,18 +9,18 @@ class TaskView extends Component<DivElement> {
   void create() {
     super.create();
 
-    element.onClick.matches(".complete-button")
+    element.onClick.matches(".task-view--complete-button")
         .map((event) => new CustomEvent("complete", detail: task))
         .forEach((event) => element.dispatchEvent(event));
 
-    element.onClick.matches(".delete-button")
+    element.onClick.matches(".task-view--delete-button")
         .map((event) => new CustomEvent("delete", detail: task))
         .forEach((event) => element.dispatchEvent(event));
   }
 
   build() =>
       root(classes: [task.isCompleted ? "completed" : ""])([
-          text(task.description),
-          button(classes: ["complete-button"])("Complete"),
-          button(classes: ["delete-button"])("Delete")]);
+          div(classes: ["task-view--text"])(task.description),
+          button(classes: ["task-view--complete-button"])("Complete"),
+          button(classes: ["task-view--delete-button"])("Delete")]);
 }

@@ -1,5 +1,13 @@
 .task-view {
+  .task-view--text {
+    display: inline;
+    transition: opacity 500ms;
+  }
+
   &.completed {
-    text-decoration: line-through;
+    .task-view--text {
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
   }
 }
