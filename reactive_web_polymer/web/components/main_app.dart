@@ -4,8 +4,8 @@
 import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-import 'package:reactive_web_polymer/models.dart';
-import 'package:reactive_web_polymer/storage.dart';
+import 'package:reactive_web_core/models.dart';
+import 'package:reactive_web_core/storage.dart';
 
 /// A Polymer `<main-app>` element.
 @CustomTag('main-app')

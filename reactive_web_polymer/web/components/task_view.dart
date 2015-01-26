@@ -1,5 +1,5 @@
 import 'package:polymer/polymer.dart';
-import 'package:reactive_web_polymer/models.dart';
+import 'package:reactive_web_core/models.dart';
 import 'dart:html';
 
 /**

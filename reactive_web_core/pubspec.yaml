@@ -1,4 +1,4 @@
-name: 'reactive_web_polymer'
+name: 'reactive_web_core'
 version: 0.0.1
 description: >
   A starter template for a polymer.dart web app.
@@ -8,11 +8,5 @@ environment:
   sdk: '>=1.0.0 <2.0.0'
 dependencies:
   browser: any
-  polymer: any
-  polymer_expressions: any
-  paper_elements: any
-  reactive_web_core:
-    path: ../reactive_web_core
-transformers:
-- polymer:
-    entry_points: web/index.html
+  stream_transformers: any
+  vacuum_persistent: any

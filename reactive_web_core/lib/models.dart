@@ -2,8 +2,7 @@ library models;
 
 import 'dart:html';
 import 'package:vacuum_persistent/persistent.dart';
-import 'package:reactive_web_polymer/model_controller.dart';
-import 'package:reactive_web_polymer/storage.dart';
+import 'package:reactive_web_core/model_controller.dart';
 import 'dart:convert';
 
 part 'src/models/application.dart';
