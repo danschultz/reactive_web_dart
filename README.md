@@ -1,6 +1,6 @@
-# TodoMVC + FRP + Polymer.dart
+# TodoMVC + FRP + Dart
 
-This is an experiment building TodoMVC in Dart using Polymer and functional reactive programming (FRP).
+This contains some experiments building TodoMVC in Dart using Polymer, virtual DOM and functional reactive programming (FRP).
 
 ## Architectural Overview
 
@@ -12,7 +12,7 @@ Models are implemented as immutable classes. [Persistent data structures](https:
 
 ### Controllers
 
-[`ModelController`](https://github.com/danschultz/reactive_web_polymer/blob/master/lib/src/model_controller/model_controller.dart)s are responsible for driving the logic for model updates, and are inspired by approaches I've seen in [Elm](https://github.com/evancz/elm-todomvc).
+[`ModelController`](https://github.com/danschultz/reactive_web_dart/blob/master/reactive_web_core/lib/src/model_controller/model_controller.dart)s are responsible for driving the logic for model updates, and are inspired by approaches I've seen in [Elm](https://github.com/evancz/elm-todomvc).
 
 Changes to the model are initiated from external inputs flowing into the app, such as mouse clicks, key presses, network responses or system events. The app filters these events into `Action`s that are passed to `ModelController.update()` which updates the model.
 
